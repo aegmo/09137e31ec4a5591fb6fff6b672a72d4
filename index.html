@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+    <link rel="stylesheet" href="asset/css/style.css">
+    <title>Otel Rezervasyon Sistemi</title>
+</head>
+<body>
+
+<header class="reservation-top">
+    <p class="head-title">Otel <span>Rezervasyon Sistemi</span></p>
+    <input class="form-control" id="reservationBtn" type="submit" value="Yeni Rezervasyon Yap">
+</header>
+<section class="reservation-wizard">
+    <div class="step-area">
+        <div class="step-box active">
+            <i class="fa fa-calendar-alt"></i>
+            <p class="step-title">Otel ve Tarih Seçimi</p>
+        </div>
+        <div class="step-box">
+            <i class="fa fa-bed"></i>
+            <p class="step-title">Oda Tipi ve Manzara Seçimi</p>
+        </div>
+        <div class="step-box">
+            <i class="fa fa-credit-card"></i>
+            <p class="step-title">Ön İzleme ve Ödeme İşlemleri</p>
+        </div>
+    </div>
+    <div class="search-reservastion">
+        <div id="myDropdown" class="dropdown-content">
+            <input type="text" placeholder="Rezervasyon yapmak istediğiniz oteli seçiniz." id="searchBox" onkeyup="filterFunction()">
+            <a href="#Aegean">Aegean Hotel</a>
+            <a href="#Alanya">Alanya Hotel</a>
+            <a href="#Bodrum"> Bodrum Hotel</a>
+            <a href="#Bosphorus">Bosphorus Hotel</a>
+            <a href="#Big">Big Istanbul Hotel</a>
+            <a href="#Dela">Dela Hotel</a>
+            <a href="#Konak">Konak Istanbul Hotel</a>
+            <a href="#Lara">Lara Hotel</a>
+            <a href="#Visnezade">Visnezade Istanbul Hotel</a>
+        </div>
+    </div>
+</section>
+
+</body>
+<script src="asset/js/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/e0980b2247.js" crossorigin="anonymous"></script>
+<script>
+    function filterFunction() {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("searchBox");
+        filter = input.value.toUpperCase();
+        div = document.getElementById("myDropdown");
+        a = div.getElementsByTagName("a");
+        for (i = 0; i < a.length; i++) {
+            txtValue = a[i].textContent || a[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                a[i].style.display = "block";
+            } else {
+                a[i].style.display = "none";
+            }
+        }
+    }
+</script>
+</html>
