@@ -228,7 +228,7 @@ section.reservation-wizard div.search-reservastion .dropdown a:hover {
 }
 .selected .fa-caret-down {
   margin-right: 0;
-  background: #dddddd;
+  background: #ddd;
   color: #333;
   position: absolute;
   right: -5px;
@@ -370,15 +370,13 @@ section.reservation-wizard div.search-reservastion .dropdown a:hover {
   border-radius: 10px;
   padding: 30px;
 }
-.credit-card-area .card-right .price-list {
-  background: #fff;
-  border-radius: 10px;
-  padding: 30px;
-}
 .credit-card-area .card-right .price-list ul {
   list-style: none;
-  padding: 0;
   font-size: 18px;
+  background: #fff;
+  border-radius: 10px 10px 0 0;
+  padding: 30px;
+  margin-bottom: 0;
 }
 .credit-card-area .card-right .price-list ul li {
   display: flex;
@@ -387,24 +385,17 @@ section.reservation-wizard div.search-reservastion .dropdown a:hover {
 }
 .credit-card-area .card-right .price-list .result {
   position: relative;
-  padding-top: 25px;
   text-align: center;
   font-size: 22px;
   text-transform: uppercase;
   font-weight: bold;
+  background: #fff;
+  border-radius: 0 0 10px 10px;
+  padding: 30px;
+  border-top: 1px solid #ddd;
 }
 .credit-card-area .card-right .price-list .result p:last-child {
   font-size: 40px;
-}
-.credit-card-area .card-right .price-list .result:before {
-  display: block;
-  content: "";
-  height: 1px;
-  position: relative;
-  width: 113%;
-  background: #bababa;
-  left: -30px;
-  top: -20px;
 }
 .credit-card-area .card-right p#hotelName {
   font-size: 25px;

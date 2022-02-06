@@ -130,3 +130,17 @@
         display: block;
     }
 }
+@media (max-width: 369px){
+    header.reservation-top .head-title span{
+        font-size: 14px;
+    }
+    .selected{
+        font-size: 11px;
+    }
+    .selected .fa-caret-down{
+        height: 43px;
+    }
+    .credit-card-area .card-left .credit-card .card-number{
+        font-size: 26px;
+    }
+}
