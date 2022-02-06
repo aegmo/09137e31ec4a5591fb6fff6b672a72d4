@@ -1,5 +1,5 @@
 body {
-  padding: 75px;
+  padding: 50px 75px;
 }
 
 p {
@@ -34,15 +34,42 @@ header.reservation-top #reservationBtn {
 
 section.reservation-wizard {
   padding: 50px 100px;
+  border: 1px solid #ddd;
 }
-section.reservation-wizard div.step-area {
+section.reservation-wizard div.step-area, section.reservation-wizard div.step-next-area {
   background: #f2f2f2;
-  padding: 25px;
+  padding: 30px;
   border-radius: 10px;
   display: flex;
   justify-content: space-evenly;
   position: relative;
   margin-bottom: 30px;
+  margin-top: 30px;
+}
+section.reservation-wizard div.step-area .step-box, section.reservation-wizard div.step-next-area .step-box {
+  text-align: center;
+  position: relative;
+  z-index: 9;
+}
+section.reservation-wizard div.step-area .step-box i, section.reservation-wizard div.step-next-area .step-box i {
+  background: #fff;
+  border-radius: 50%;
+  text-align: center;
+  color: #999999;
+  height: 75px;
+  font-size: 32px;
+  width: 75px;
+  margin-bottom: 15px;
+  line-height: 73px;
+  border: 1px solid #999999;
+}
+section.reservation-wizard div.step-area .step-box .step-title, section.reservation-wizard div.step-next-area .step-box .step-title {
+  font-weight: bold;
+  color: #999999;
+}
+section.reservation-wizard div.step-area .step-box.active i, section.reservation-wizard div.step-area .step-box.active .step-title, section.reservation-wizard div.step-next-area .step-box.active i, section.reservation-wizard div.step-next-area .step-box.active .step-title {
+  color: #333;
+  border-color: #333;
 }
 section.reservation-wizard div.step-area:after {
   content: "";
@@ -56,39 +83,14 @@ section.reservation-wizard div.step-area:after {
   width: 54%;
   background: #e4e4e4;
 }
-section.reservation-wizard div.step-area .step-box {
-  text-align: center;
-  position: relative;
-  z-index: 9;
-}
-section.reservation-wizard div.step-area .step-box i {
-  background: #fff;
-  border-radius: 50%;
-  text-align: center;
-  color: #999999;
-  height: 75px;
-  font-size: 32px;
-  width: 75px;
-  margin-bottom: 15px;
-  line-height: 73px;
-  border: 1px solid #999999;
-}
-section.reservation-wizard div.step-area .step-box .step-title {
-  font-weight: bold;
-  color: #999999;
-}
-section.reservation-wizard div.step-area .step-box.active i, section.reservation-wizard div.step-area .step-box.active .step-title {
-  color: #333;
-  border-color: #333;
-}
 section.reservation-wizard div.search-reservastion {
   border-radius: 10px;
   border: 1px solid #f2f2f2;
   padding: 50px 30px;
+  margin-bottom: 30px;
 }
 section.reservation-wizard div.search-reservastion #searchBox {
   box-sizing: border-box;
-  background-image: url("searchicon.png");
   background-position: 14px 12px;
   background-repeat: no-repeat;
   font-size: 16px;
@@ -100,7 +102,10 @@ section.reservation-wizard div.search-reservastion #searchBox {
   position: relative;
 }
 section.reservation-wizard div.search-reservastion #searchBox:before {
-  content: "asas";
+  content: "Look at this orange box.";
+  background-color: #FFBA10;
+  border-color: black;
+  border-style: dotted;
 }
 section.reservation-wizard div.search-reservastion #searchBox:focus {
   outline: 3px solid #ddd;
@@ -125,6 +130,499 @@ section.reservation-wizard div.search-reservastion .dropdown-content a {
 }
 section.reservation-wizard div.search-reservastion .dropdown a:hover {
   background-color: #ddd;
+}
+
+.select-box {
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+.select-box .options-container {
+  background: #073763;
+  color: #f5f6fa;
+  max-height: 0;
+  width: 100%;
+  opacity: 0;
+  transition: all 0.4s;
+  border-radius: 8px;
+  overflow: hidden;
+  order: 1;
+}
+.select-box .options-container.active {
+  max-height: 240px;
+  opacity: 1;
+  overflow-y: scroll;
+  margin-top: 54px;
+}
+.select-box .options-container.active + .selected::after {
+  transform: rotateX(180deg);
+  top: -6px;
+}
+.select-box .options-container::-webkit-scrollbar {
+  width: 8px;
+  background: #0d141f;
+  border-radius: 0 8px 8px 0;
+}
+.select-box .options-container::-webkit-scrollbar-thumb {
+  background: #525861;
+  border-radius: 0 8px 8px 0;
+}
+.select-box .option,
+.select-box .selected {
+  padding: 12px 24px 12px 10px;
+  cursor: pointer;
+}
+.select-box label {
+  cursor: pointer;
+  margin-bottom: 0;
+}
+.select-box .option:hover {
+  background: #414b57;
+}
+.select-box input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  position: absolute;
+  border-radius: 8px 8px 0 0;
+  z-index: 100;
+  border: 8px solid #073763;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s;
+}
+.select-box .option .radio {
+  display: none;
+}
+.select-box .options-container.active ~ .search-box input {
+  opacity: 1;
+  pointer-events: auto;
+}
+.select-box input:focus {
+  outline: none;
+}
+
+.selected {
+  margin-bottom: 30px;
+  color: #000000;
+  font-weight: bold;
+  font-size: 20px;
+  position: relative;
+  border: 1px solid #000;
+  order: 0;
+}
+.selected::after {
+  content: "";
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  height: 100%;
+  width: 32px;
+  right: 10px;
+  top: 5px;
+  transition: all 0.4s;
+}
+.selected i {
+  margin-right: 5px;
+}
+.selected .fa-caret-down {
+  margin-right: 0;
+  background: #dddddd;
+  color: #333;
+  position: absolute;
+  right: -5px;
+  height: 56px;
+  border-radius: 0 5px 5px 0;
+  font-size: 25px;
+  padding: 10px;
+  top: -1px;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+}
+
+.reservation-option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.reservation-option .option-box {
+  border: 1px solid #000;
+  padding: 20px 30px 25px;
+  width: 100%;
+  min-height: 111px;
+}
+.reservation-option .option-box label {
+  display: block;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+.reservation-option .option-box input, .reservation-option .option-box select {
+  width: 100%;
+  min-height: 50px;
+  font-size: 18px;
+}
+.reservation-option .option-box select {
+  text-align: right;
+}
+
+.step-next-area {
+  justify-content: flex-end !important;
+  padding: 40px 30px !important;
+}
+.step-next-area a {
+  border: none;
+  background: #073763;
+  border-radius: 5px;
+  color: #fff !important;
+  font-size: 17px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#wizard-2 .wizard-1-checked {
+  background: #f2f2f2;
+  padding: 30px;
+  border-radius: 10px;
+  position: relative;
+  margin-bottom: 30px;
+}
+#wizard-2 .wizard-1-checked p#hotelName {
+  font-size: 25px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+#wizard-2 .wizard-1-checked ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+.room-type-choice {
+  margin-bottom: 30px;
+}
+.room-type-choice p.choice-title {
+  font-weight: bold;
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 15px;
+}
+.room-type-choice p.choice-title:after {
+  content: "";
+  width: 100%;
+  background: #ddd;
+  height: 1px;
+  display: block;
+  margin-top: 15px;
+}
+.room-type-choice .choice-row {
+  display: flex;
+}
+.room-type-choice input[type=radio] {
+  display: none;
+}
+.room-type-choice img {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.room-type-choice input[type=radio]:checked + label {
+  border-color: #43b74e !important;
+}
+.room-type-choice .choice-radio {
+  padding: 30px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.room-type-choice .choice-radio p {
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+.room-type-choice .choice-select {
+  margin-right: 30px;
+}
+.room-type-choice .choice-select:last-child {
+  margin-right: 0 !important;
+}
+.room-type-choice .room-desc {
+  display: flex;
+  justify-content: space-between;
+}
+.room-type-choice .room-desc ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+.room-type-choice .room-desc .price {
+  font-size: 25px;
+}
+
+.credit-card-area {
+  display: flex;
+}
+.credit-card-area .card-right {
+  width: 38%;
+  background: #f2f2f2;
+  border-radius: 10px;
+  padding: 30px;
+}
+.credit-card-area .card-right .price-list {
+  background: #fff;
+  border-radius: 10px;
+  padding: 30px;
+}
+.credit-card-area .card-right .price-list ul {
+  list-style: none;
+  padding: 0;
+  font-size: 18px;
+}
+.credit-card-area .card-right .price-list ul li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.credit-card-area .card-right .price-list .result {
+  position: relative;
+  padding-top: 25px;
+  text-align: center;
+  font-size: 22px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.credit-card-area .card-right .price-list .result p:last-child {
+  font-size: 40px;
+}
+.credit-card-area .card-right .price-list .result:before {
+  display: block;
+  content: "";
+  height: 1px;
+  position: relative;
+  width: 113%;
+  background: #bababa;
+  left: -30px;
+  top: -20px;
+}
+.credit-card-area .card-right p#hotelName {
+  font-size: 25px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px;
+}
+.credit-card-area .card-right .result-area ul {
+  list-style-type: none;
+  padding-left: 0;
+  display: flex;
+  justify-content: center;
+}
+.credit-card-area .card-right .result-area ul li {
+  width: 100%;
+  padding: 20px;
+  background: #fff;
+  margin-right: 15px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 20px;
+}
+.credit-card-area .card-right .result-area ul li:last-child {
+  margin-right: 0 !important;
+}
+.credit-card-area .card-right .result-area ul li input[type=submit] {
+  border: 0;
+  background: #073763;
+  color: #fff;
+  padding: 5px 15px;
+  border-radius: 10px;
+}
+.credit-card-area .card-right .result-area ul li span {
+  display: block;
+}
+.credit-card-area .card-right .coupon-code li {
+  display: flex;
+}
+.credit-card-area .card-right .coupon-code li input[type=text] {
+  width: 100%;
+  margin-right: 15px;
+}
+.credit-card-area .card-left {
+  width: 60%;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin-right: 30px;
+}
+.credit-card-area .card-left .credit-card {
+  background: #f2f2f2;
+  border-radius: 10px;
+  padding: 30px;
+  position: relative;
+}
+.credit-card-area .card-left .credit-card .card-name-top {
+  padding-left: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  font-size: 30px;
+}
+.credit-card-area .card-left .credit-card .card-chip {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.credit-card-area .card-left .credit-card .card-chip i.fa-caret-left {
+  font-size: 25px;
+}
+.credit-card-area .card-left .credit-card .card-chip i.fa-microchip {
+  font-size: 50px;
+  margin-left: 10px;
+}
+.credit-card-area .card-left .credit-card .card-number {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.credit-card-area .card-left .credit-card .card-name {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.credit-card-area .card-left .credit-card .card-date {
+  font-size: 25px;
+}
+.credit-card-area .card-left .credit-card .card-icon {
+  position: absolute;
+  right: 30px;
+  bottom: 15px;
+  font-size: 70px;
+}
+.credit-card-area .card-left .credit-card-input {
+  margin-top: 30px;
+}
+.credit-card-area .card-left .credit-card-input fieldset {
+  border: 1px solid #000;
+  padding: revert;
+}
+.credit-card-area .card-left .credit-card-input fieldset legend {
+  display: inline !important;
+  width: auto;
+  font-weight: bold;
+  padding: 10px;
+  font-size: 20px;
+}
+.credit-card-area .card-left .credit-card-input fieldset .card-in-row {
+  margin-bottom: 15px;
+}
+.credit-card-area .card-left .credit-card-input fieldset .card-in-row:last-child {
+  display: flex;
+  justify-content: space-between;
+}
+.credit-card-area .card-left .credit-card-input fieldset .card-in-row .select-box-in {
+  display: flex;
+}
+.credit-card-area .card-left .credit-card-input fieldset .card-in-row .select-box-in select {
+  width: 100%;
+  margin-right: 15px;
+  height: 30px;
+}
+.credit-card-area .card-left .credit-card-input fieldset input, .credit-card-area .card-left .credit-card-input fieldset label {
+  width: 100%;
+  display: block;
+}
+.credit-card-area .card-left .credit-card-input fieldset select {
+  width: 48%;
+}
+
+#wizard-4 .card-right {
+  width: 100% !important;
+}
+#wizard-4 .result:before {
+  width: 104.2% !important;
+}
+#wizard-4 .reservastion-success {
+  border-radius: 10px;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid #ddd;
+  margin-bottom: 30px;
+}
+#wizard-4 .reservastion-success i {
+  color: #009e0f;
+  font-size: 80px;
+}
+#wizard-4 .reservastion-success i + p {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 10px 0;
+}
+#wizard-4 .reservastion-success i + p + p {
+  margin-bottom: 10px;
+}
+#wizard-4 .reservastion-success .btn-list {
+  display: flex;
+  justify-content: center;
+}
+#wizard-4 .reservastion-success .btn-list a {
+  background: #073763;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  display: block;
+  text-align: center;
+}
+.modal-content .close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: right;
+}
+.modal-content .close:hover,
+.modal-content .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal-content p {
+  text-align: center;
+  font-size: 20px;
+  color: #073763;
+  font-weight: bold;
+}
+.modal-content a {
+  background: #073763;
+  color: #fff !important;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  display: inline-block;
 }
 
 /*# sourceMappingURL=style.css.map */

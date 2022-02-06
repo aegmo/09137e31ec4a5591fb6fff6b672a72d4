@@ -1,0 +1,132 @@
+@media (max-width: 768px){
+  body{
+    padding:0;
+  }
+  .reservation-top{
+    padding:15px !important;
+  }
+  header.reservation-top .head-title span{
+    font-size: 16px;
+  }
+  section.reservation-wizard, section.reservation-wizard div.search-reservastion{
+    padding:15px
+  }
+  section.reservation-wizard div.step-area{
+    padding: 15px;
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+  section.reservation-wizard div.step-area .step-box{
+    width: 33.3%;
+  }
+  section.reservation-wizard div.step-area .step-box i{
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 25px;
+  }
+  p.step-title{
+    font-size: 13px;
+  }
+  section.reservation-wizard div.step-area:after{
+    top:30%;
+  }
+  .selected .fa-caret-down{
+    padding: 5px;
+    height: 44px;
+    font-size: 20px;
+  }
+  .selected{
+    margin-bottom: 15px;
+    font-size: 12px;
+  }
+  .reservation-option .option-box{
+    padding:10px;
+    margin-bottom: 10px;
+    min-height: auto;
+    display: inline-block;
+    width: 49%;
+  }
+  .reservation-option .option-box label{
+    font-size: 14px;
+  }
+  .reservation-option .option-box input, .reservation-option .option-box select{
+    min-height: 33px;
+    font-size: 15px;
+  }
+  .reservation-option{
+    display: block;
+  }
+  section.reservation-wizard div.step-next-area{
+    margin-top: 15px;
+    padding: 15px !important;
+    justify-content: center !important;
+  }
+  #wizard-2 .wizard-1-checked{
+    padding: 15px !important;
+  }
+  #wizard-2 .choice-row{
+    display: block;
+  }
+  #wizard-2 .choice-row .choice-select{
+    margin-right: 0;
+  }
+  .room-type-choice .choice-radio{
+    padding: 15px;
+  }
+  .credit-card-area{
+    display: block;
+  }
+  .card-left, .card-right{
+    width: 100% !important;
+    padding: 15px !important;
+  }
+  .credit-card-area .card-left .credit-card{
+    padding: 15px !important;
+  }
+  .credit-card-area .card-left .credit-card .card-number{
+    font-size: 28px;
+    margin-bottom: 0;
+  }
+  .credit-card-area .card-left .credit-card .card-name, .credit-card-area .card-left .credit-card .card-date{
+    font-size: 20px;
+    margin-bottom: 0;
+  }
+  .credit-card-area .card-left .credit-card .card-icon {
+    position: absolute;
+    right: 15px;
+    bottom: -6px;
+    font-size: 50px;
+  }
+  .credit-card-area .card-right{
+    width: 100%;
+    padding: 15px;
+    margin-top: 15px;
+  }
+  .credit-card-area .card-right p#hotelName{
+    margin-bottom: 10px;
+  }
+  .credit-card-area .card-right .result-area ul li{
+    padding: 15px;
+    font-size: 15px;
+  }
+  #wizard-4 .reservastion-success{
+    padding: 15px;
+  }
+  #wizard-4 .reservastion-success i + p + p{
+    font-size: 12px;
+  }
+  #wizard-4 .reservastion-success i + p + p br{
+    display: none;
+  }
+  #wizard-4 .reservastion-success .btn-list a {
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    margin-right: 10px;
+    display: inline-block;
+  }
+  #wizard-4 .reservastion-success .btn-list{
+    display: block;
+  }
+}
